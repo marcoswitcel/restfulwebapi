@@ -20,6 +20,8 @@ public class ProductController {
     private ProductRepository productRepository;
 
     /**
+     * Ação que retonar a lista com todos os atores
+     *
      * @TODO acho que seria interessante deixar essa rota como sendo o
      * getAll paginado dos produtos, talvez receber o orderby e outros
      *
@@ -41,6 +43,13 @@ public class ProductController {
         return productRepository.save(product);
     }
 
+    /**
+     * Ação que retorna os dados de um produto ou uma mensagem de conteúdo
+     * não encontrado
+     *
+     * @param id Id de um produto cadastrado no banco de dados
+     * @return Os
+     */
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable long id) {
         Product product = productRepository.findById(id)
