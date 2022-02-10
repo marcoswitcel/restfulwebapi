@@ -20,7 +20,7 @@ public class ProductController {
     private ProductRepository productRepository;
 
     /**
-     * Ação que retonar a lista com todos os atores
+     * Ação que retonar a lista com todos os atores.
      *
      * @TODO acho que seria interessante deixar essa rota como sendo o
      * getAll paginado dos produtos, talvez receber o orderby e outros
@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     /**
-     * Ação de cadastro de novo produto
+     * Ação de cadastro de novo produto.
      *
      * @param product Os dados do novo produto que será cadastrado
      * @return Retorna os dados do produto agora com o ID
@@ -45,10 +45,10 @@ public class ProductController {
 
     /**
      * Ação que retorna os dados de um produto ou uma mensagem de conteúdo
-     * não encontrado
+     * não encontrado.
      *
      * @param id Id de um produto cadastrado no banco de dados
-     * @return Os
+     * @return Retorna os dados do produto encontrado
      */
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable long id) {
@@ -57,4 +57,28 @@ public class ProductController {
 
         return ResponseEntity.ok().body(product);
     }
+
+    /**
+     * Ação que permite atualizar os dados de um produto.
+     *
+     * @param id Id de um produto cadastrado no banco de dados
+     * @param productPayload Dados do produto que foram enviados, seguem o formato
+     *                       do próprio produto
+     * @return Retorna os novos dados associados ao produto
+     */
+    @PutMapping("/product/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody Product productPayload) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
+
+        product.setDescription(productPayload.getDescription());
+        product.setProductType(productPayload.getProductType());
+        product.setPrice(productPayload.getPrice());
+        product.setQuantityInStock(productPayload.getQuantityInStock());
+
+        productRepository.save(product);
+
+        return ResponseEntity.ok().body(product);
+    }
+
 }
