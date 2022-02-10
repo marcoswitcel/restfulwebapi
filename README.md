@@ -22,3 +22,8 @@ mvn spring-boot:run
 
 A estrutura de pastas é a sugerida pela ferramenta de bootstrap de projeto [https://start.spring.io/](https://start.spring.io/).
 
+## Referências
+
+Essa seção documenta alguns dos materiais usados para a contrução da aplicação (código fonte).
+
+* Tutorial "Contruindo um serviço Rest com Spring" [https://spring.io/guides/tutorials/rest/](https://spring.io/guides/tutorials/rest/)
