@@ -2,9 +2,8 @@ package com.marcoswitcel.restfulwebapi.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import com.marcoswitcel.restfulwebapi.model.Product;
 import com.marcoswitcel.restfulwebapi.repository.ProductRepository;
@@ -25,5 +24,16 @@ public class ProductController {
     @GetMapping("/product")
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    /**
+     * Ação de cadastro de novo produto
+     *
+     * @param product Os dados do novo produto que será cadastrado
+     * @return Retorna os dados do produto agora com o ID
+     */
+    @PostMapping("/product")
+    public Product createProduct(@Validated @RequestBody Product product) {
+        return productRepository.save(product);
     }
 }
