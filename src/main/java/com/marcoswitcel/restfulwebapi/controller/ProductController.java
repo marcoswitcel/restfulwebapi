@@ -81,4 +81,18 @@ public class ProductController {
         return ResponseEntity.ok().body(product);
     }
 
+    /**
+     * Ação que permite a deleção de produtos do banco de dados.
+     *
+     * @param id Id de um produto cadastrado no banco de dados
+     */
+    @DeleteMapping("/product/{id}")
+    public void deleteProduct(@PathVariable long id) {
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+        } else {
+            throw new ProductNotFoundException(id);
+        }
+    }
+    
 }
