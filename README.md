@@ -22,6 +22,10 @@ mvn spring-boot:run
 
 A estrutura de pastas é a sugerida pela ferramenta de bootstrap de projeto [https://start.spring.io/](https://start.spring.io/).
 
+## Ferramentas úteis
+
+* Postman para testar a API [https://www.postman.com/downloads/](https://www.postman.com/downloads/)
+
 ## Referências
 
 Essa seção documenta alguns dos materiais usados para a contrução da aplicação (código fonte).
