@@ -15,8 +15,9 @@ public class ProductMovement {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private int type;
+    private ProductMovementType type;
 
     @Column(name = "sell_price")
     private double sellPrice;
@@ -31,7 +32,7 @@ public class ProductMovement {
         super();
     }
 
-    public ProductMovement(long id, Product product, int type, double sellPrice, Date sellDate, long quantity) {
+    public ProductMovement(long id, Product product, ProductMovementType type, double sellPrice, Date sellDate, long quantity) {
         super();
         this.id = id;
         this.product = product;
@@ -57,11 +58,11 @@ public class ProductMovement {
         this.product = product;
     }
 
-    public int getType() {
+    public ProductMovementType getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(ProductMovementType type) {
         this.type = type;
     }
 
