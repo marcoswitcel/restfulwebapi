@@ -33,3 +33,6 @@ Essa seção documenta alguns dos materiais usados para a contrução da aplica�
 * Tutorial "Construindo serviços Rest com Spring" [https://spring.io/guides/tutorials/rest/](https://spring.io/guides/tutorials/rest/)
 * YouTube: Spring Boot Restful Web Services CRUD Example [https://www.youtube.com/watch?v=YYwFhclOlqs](https://www.youtube.com/watch?v=YYwFhclOlqs)
 * Como configurar relacionamentos entre entidades: [https://www.baeldung.com/spring-data-rest-relationships](https://www.baeldung.com/spring-data-rest-relationships)
+* Trabalhando com Enums nas colunas [https://tomee.apache.org/examples-trunk/jpa-enumerated/](https://tomee.apache.org/examples-trunk/jpa-enumerated/)
+* Transações Baeldung [https://www.baeldung.com/spring-transactional-propagation-isolation](https://www.baeldung.com/spring-transactional-propagation-isolation)
+* Transações exemplo e explicação StackOverflow: [https://stackoverflow.com/questions/8490852/spring-transactional-isolation-propagation](https://stackoverflow.com/questions/8490852/spring-transactional-isolation-propagation)
