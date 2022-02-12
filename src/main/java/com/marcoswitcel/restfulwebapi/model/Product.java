@@ -1,6 +1,7 @@
 package com.marcoswitcel.restfulwebapi.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -22,6 +23,9 @@ public class Product {
 
     @Column(name = "quantity_stock")
     private long quantityInStock;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductMovement> productMovements;
 
     public Product() {
         super();
