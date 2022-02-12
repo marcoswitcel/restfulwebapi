@@ -30,4 +30,5 @@ A estrutura de pastas é a sugerida pela ferramenta de bootstrap de projeto [htt
 
 Essa seção documenta alguns dos materiais usados para a contrução da aplicação (código fonte).
 
-* Tutorial "Construindo um serviços Rest com Spring" [https://spring.io/guides/tutorials/rest/](https://spring.io/guides/tutorials/rest/)
+* Tutorial "Construindo serviços Rest com Spring" [https://spring.io/guides/tutorials/rest/](https://spring.io/guides/tutorials/rest/)
+* YouTube: Spring Boot Restful Web Services CRUD Example [https://www.youtube.com/watch?v=YYwFhclOlqs](https://www.youtube.com/watch?v=YYwFhclOlqs)
