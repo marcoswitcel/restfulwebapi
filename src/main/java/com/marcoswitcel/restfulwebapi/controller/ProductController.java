@@ -1,5 +1,6 @@
 package com.marcoswitcel.restfulwebapi.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import com.marcoswitcel.restfulwebapi.model.ReportDto;
 import com.marcoswitcel.restfulwebapi.model.Product;
 import com.marcoswitcel.restfulwebapi.repository.ProductRepository;
 import com.marcoswitcel.restfulwebapi.exception.ProductNotFoundException;
@@ -114,6 +116,23 @@ public class ProductController {
         } else {
             throw new ProductNotFoundException(id);
         }
+    }
+
+    @GetMapping("/products/report")
+    public ResponseEntity<List<ReportDto>> getReport(@RequestParam("type") Optional<Long> productTypeId) {
+        List<ReportDto> jsonFormat = new ArrayList<>();
+
+        List<Product> selectedProducts = (productTypeId.isPresent())
+            ? productRepository.findAllByProductTypeId(productTypeId.get(), Pageable.unpaged())
+            : productRepository.findAll();
+
+        selectedProducts.forEach(product -> {
+            jsonFormat.add(new ReportDto(
+                product, 0, 0
+            ));
+        });
+
+        return ResponseEntity.ok().body(jsonFormat);
     }
 
 }
