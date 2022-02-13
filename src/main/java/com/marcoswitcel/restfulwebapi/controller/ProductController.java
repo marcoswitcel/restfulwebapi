@@ -1,8 +1,12 @@
 package com.marcoswitcel.restfulwebapi.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +32,19 @@ public class ProductController {
      * @return Retorna a lista de produtos
      */
     @GetMapping("/product")
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<Product> getAllProducts(@RequestParam("page") Optional<Integer> pageIndex, @RequestParam("type") Optional<Long> productTypeId) {
+
+        Pageable page = PageRequest.of(
+            (pageIndex.isPresent() ? pageIndex.get() : 0),
+            10,
+            Sort.by("id").descending()
+        );
+
+        if (productTypeId.isPresent()) {
+            return productRepository.findAllByProductTypeId(productTypeId.get(), page);
+        }
+
+        return productRepository.findAll(page).getContent();
     }
 
     /**
