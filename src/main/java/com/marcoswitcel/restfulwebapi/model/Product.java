@@ -3,6 +3,8 @@ package com.marcoswitcel.restfulwebapi.model;
 import javax.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -25,7 +27,16 @@ public class Product {
     private long quantityInStock;
 
     @OneToMany(mappedBy = "product")
+    @JsonManagedReference
     private List<ProductMovement> productMovements;
+
+    public List<ProductMovement> getProductMovements() {
+        return productMovements;
+    }
+
+    public void setProductMovements(List<ProductMovement> productMovements) {
+        this.productMovements = productMovements;
+    }
 
     public Product() {
         super();

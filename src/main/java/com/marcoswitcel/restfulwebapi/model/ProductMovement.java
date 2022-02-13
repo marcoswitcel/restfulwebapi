@@ -3,6 +3,8 @@ package com.marcoswitcel.restfulwebapi.model;
 import javax.persistence.*;
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "product_movements")
 public class ProductMovement {
@@ -13,6 +15,7 @@ public class ProductMovement {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     private Product product;
 
     @Enumerated(EnumType.STRING)
