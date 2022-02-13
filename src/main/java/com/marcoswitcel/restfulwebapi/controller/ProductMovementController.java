@@ -60,7 +60,6 @@ public class ProductMovementController {
             case SALE: {
                 newQuantityInStock = product.getQuantityInStock() - productMovement.getQuantity();
                 // Caso seja uma saída de produto valida se há produtos suficiente para registrar
-                // @TODO não é a forma correta de checar e atualizar o preço de forma segura
                 if (newQuantityInStock < 0) {
                     throw new ProductMovementQuantityNotAvailableException(product, productMovement.getQuantity());
                 }
