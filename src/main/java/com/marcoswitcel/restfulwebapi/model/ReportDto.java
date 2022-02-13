@@ -4,11 +4,11 @@ public class ReportDto {
 
     private Product product;
 
-    private long profitQuantity;
+    private double profitQuantity;
 
     private long salesQuantity;
 
-    public ReportDto(Product product, long profitQuantity, long salesQuantity) {
+    public ReportDto(Product product, double profitQuantity, long salesQuantity) {
         super();
         this.product = product;
         this.profitQuantity = profitQuantity;
@@ -23,11 +23,11 @@ public class ReportDto {
         this.product = product;
     }
 
-    public long getProfitQuantity() {
+    public double getProfitQuantity() {
         return profitQuantity;
     }
 
-    public void setProfitQuantity(long profitQuantity) {
+    public void setProfitQuantity(double profitQuantity) {
         this.profitQuantity = profitQuantity;
     }
 

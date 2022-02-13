@@ -16,6 +16,8 @@ import com.marcoswitcel.restfulwebapi.model.ReportDto;
 import com.marcoswitcel.restfulwebapi.model.Product;
 import com.marcoswitcel.restfulwebapi.repository.ProductRepository;
 import com.marcoswitcel.restfulwebapi.exception.ProductNotFoundException;
+import com.marcoswitcel.restfulwebapi.model.ProductMovement;
+import com.marcoswitcel.restfulwebapi.model.ProductMovementType;
 
 
 @RestController
@@ -126,9 +128,28 @@ public class ProductController {
             ? productRepository.findAllByProductTypeId(productTypeId.get(), Pageable.unpaged())
             : productRepository.findAll();
 
+        /*
+         * @TODO Não deu tempo para fazer esse "acumulador" funcionar, calculei no frontend
+         */
         selectedProducts.forEach(product -> {
+            ProductMovement reducedMovement = product.getProductMovements()
+                .stream()
+                .reduce(new ProductMovement(), (accumluated, newValue) -> {
+                    // Nas vendas incrementa os dois
+                    if (accumluated.getType() == ProductMovementType.SALE) {
+                        accumluated.setQuantity(accumluated.getQuantity() + newValue.getQuantity());
+                        accumluated.setSellPrice(accumluated.getSellPrice() + newValue.getSellPrice());
+                    }
+
+                    // Nas compras apenas desconta do lucro
+                    if (accumluated.getType() == ProductMovementType.PURCHASE) {
+                        accumluated.setSellPrice(accumluated.getSellPrice() - newValue.getSellPrice());
+                    }
+
+                    return accumluated;
+                });
             jsonFormat.add(new ReportDto(
-                product, 0, 0
+                product, reducedMovement.getSellPrice(), reducedMovement.getQuantity()
             ));
         });
 
