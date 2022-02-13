@@ -16,6 +16,7 @@ import com.marcoswitcel.restfulwebapi.model.ProductMovement;
 import com.marcoswitcel.restfulwebapi.repository.ProductRepository;
 import com.marcoswitcel.restfulwebapi.repository.ProductMovementRepository;
 
+
 @RestController
 @RequestMapping("/api/v1")
 public class ProductMovementController {
