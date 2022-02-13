@@ -14,9 +14,9 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    /** @TODO criar a relação aqui */
-    @Column(name = "product_type_id")
-    private long productType;
+    @ManyToOne
+    @JoinColumn(name = "product_type_id")
+    private ProductType productType;
 
     @Column(name = "price")
     private double price;
@@ -31,7 +31,7 @@ public class Product {
         super();
     }
 
-    public Product(String description, long productType, double price, long quantityInStock) {
+    public Product(String description, ProductType productType, double price, long quantityInStock) {
         super();
         this.description = description;
         this.productType = productType;
@@ -39,7 +39,7 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    public Product(long id, String description, long productType, double price, long quantityInStock) {
+    public Product(long id, String description, ProductType productType, double price, long quantityInStock) {
         super();
         this.id = id;
         this.description = description;
@@ -64,11 +64,11 @@ public class Product {
         this.description = description;
     }
 
-    public long getProductType() {
+    public ProductType getProductType() {
         return productType;
     }
 
-    public void setProductType(long productType) {
+    public void setProductType(ProductType productType) {
         this.productType = productType;
     }
 
@@ -91,10 +91,10 @@ public class Product {
     @Override
     public String toString() {
         return String.format(
-            "Product{id=%d, description='%s', productType=%d, price=%4.3f, quantityInStock=%d}",
+            "Product{id=%d, description='%s', productType='%s', price=%4.3f, quantityInStock=%d}",
             this.getId(),
             this.getDescription(),
-            this.getProductType(),
+            this.getProductType().getName(),
             this.getPrice(),
             this.getQuantityInStock()
         );
