@@ -37,3 +37,4 @@ Essa seção documenta alguns dos materiais usados para a contrução da aplica�
 * Transações Baeldung [https://www.baeldung.com/spring-transactional-propagation-isolation](https://www.baeldung.com/spring-transactional-propagation-isolation)
 * Transações exemplo e explicação StackOverflow: [https://stackoverflow.com/questions/8490852/spring-transactional-isolation-propagation](https://stackoverflow.com/questions/8490852/spring-transactional-isolation-propagation)
 * Manipulando dados com JPA: [https://spring.io/guides/gs/accessing-data-jpa/](https://spring.io/guides/gs/accessing-data-jpa/)
+* Trabalhando com Loggers: [https://www.baeldung.com/spring-boot-logging](https://www.baeldung.com/spring-boot-logging)
