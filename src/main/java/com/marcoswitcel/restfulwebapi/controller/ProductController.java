@@ -34,6 +34,12 @@ public class ProductController {
     @GetMapping("/product")
     public List<Product> getAllProducts(@RequestParam("page") Optional<Integer> pageIndex, @RequestParam("type") Optional<Long> productTypeId) {
 
+        // Retorna todos os dados caso não receba o número da página
+        if (pageIndex.isEmpty()) {
+            return productRepository.findAll();
+        }
+
+        // Se receber o ínice, pagina de 10 em 10
         Pageable page = PageRequest.of(
             (pageIndex.isPresent() ? pageIndex.get() : 0),
             10,
