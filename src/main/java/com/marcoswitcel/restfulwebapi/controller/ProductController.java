@@ -20,7 +20,7 @@ public class ProductController {
     private ProductRepository productRepository;
 
     /**
-     * Ação que retonar a lista com todos os atores.
+     * Ação que retonar a lista com todos os produtos.
      *
      * @TODO acho que seria interessante deixar essa rota como sendo o
      * getAll paginado dos produtos, talvez receber o orderby e outros

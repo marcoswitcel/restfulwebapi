@@ -19,12 +19,18 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(ProductRepository productRepository, ProductTypeRepository productTypeRepository) {
         return args -> {
-            ProductType productType = productTypeRepository.save(new ProductType("Eletrônicos"));
+            // Cadastro e log dos tipos
+            ProductType productType01 = productTypeRepository.save(new ProductType("Eletrônicos"));
+            ProductType productType02 = productTypeRepository.save(new ProductType("Papelaria"));
+            ProductType productType03 = productTypeRepository.save(new ProductType("Higiene"));
+
             productTypeRepository.findAll().forEach(prodType -> {
                 logger.info("Inserido Tipo: " + prodType);
             });
 
-            productRepository.save(new Product("TV", productType, 1500.00,1));
+            productRepository.save(new Product("TV", productType01, 1500.00,12));
+            productRepository.save(new Product("Livro do Harry Potter", productType02, 45.55,2));
+            productRepository.save(new Product("Sabonete Líquido", productType03, 10.25,50));
             productRepository.findAll().forEach(product -> {
                 logger.info("Inserido: " + product);
             });
